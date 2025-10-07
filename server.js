@@ -1,10 +1,7 @@
-const http = require("node:http");
+const fastify = require("fastify");
 
-const server = http.createServer((request, reply) => {
-	reply.write("Hello World");
-	reply.end();
-});
+const server = fastify();
 
-server.listen(3333).on("listening", () => {
+server.listen({ port: 3333 }).then(() => {
 	console.log("HTTP server running!");
 });
