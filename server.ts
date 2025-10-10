@@ -1,5 +1,7 @@
 import fastify from "fastify";
-import crypto from "node:crypto";
+import { eq } from "drizzle-orm";
+import { db } from "./src/database/client.ts";
+import { courses } from "./src/database/schema.ts";
 
 const server = fastify({
   logger: {
@@ -13,38 +15,41 @@ const server = fastify({
   },
 });
 
-const courses = [
-  { id: "1", title: "Curso de Node.js" },
-  { id: "2", title: "Curso de React" },
-  { id: "3", title: "Curso de React Native" },
-];
+server.get("/courses", async (request, reply) => {
+  const result = await db
+    .select({
+      id: courses.id,
+      title: courses.title,
+    })
+    .from(courses);
 
-server.get("/courses", () => {
-  return { courses };
+  return reply.send({ courses: result });
 });
 
-server.get("/courses/:id", (request, reply) => {
+server.get("/courses/:id", async (request, reply) => {
   type Params = {
     id: string;
   };
 
   const params = request.params as Params;
   const courseId = params.id;
-  const course = courses.find((course) => course.id === courseId);
 
-  if (course) {
-    return { course };
+  const result = await db
+    .select()
+    .from(courses)
+    .where(eq(courses.id, courseId));
+
+  if (result.length > 0) {
+    return { course: result[0] };
   }
 
   return reply.status(404).send();
 });
 
-server.post("/courses", (request, reply) => {
+server.post("/courses", async (request, reply) => {
   type Body = {
     title: string;
   };
-
-  const courseId = crypto.randomUUID();
 
   const body = request.body as Body;
   const courseTitle = body.title;
@@ -53,8 +58,12 @@ server.post("/courses", (request, reply) => {
     return reply.status(400).send({ message: "Título obrigatório." });
   }
 
-  courses.push({ id: courseId, title: courseTitle });
-  reply.status(201).send({ id: courseId });
+  const result = await db
+    .insert(courses)
+    .values({ title: courseTitle })
+    .returning();
+
+  reply.status(201).send({ id: result[0].id });
 });
 
 server.listen({ port: 3333 }).then(() => {
