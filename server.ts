@@ -1,8 +1,11 @@
 import fastify from "fastify";
+import fastifySwagger from "@fastify/swagger";
+import { fastifySwaggerUi } from "@fastify/swagger-ui";
 import {
   validatorCompiler,
   serializerCompiler,
   type ZodTypeProvider,
+  jsonSchemaTransform,
 } from "fastify-type-provider-zod";
 import { eq } from "drizzle-orm";
 import { db } from "./src/database/client.ts";
@@ -20,6 +23,20 @@ const server = fastify({
     },
   },
 }).withTypeProvider<ZodTypeProvider>();
+
+server.register(fastifySwagger, {
+  openapi: {
+    info: {
+      title: "Drizzle ORM",
+      version: "1.0.0",
+    },
+  },
+  transform: jsonSchemaTransform,
+});
+
+server.register(fastifySwaggerUi, {
+  routePrefix: "/docs",
+});
 
 server.setValidatorCompiler(validatorCompiler); // valido os dados de entrada (ex: título do curso)
 server.setSerializerCompiler(serializerCompiler); // converte os dados de saída de uma rota em um outro formato
