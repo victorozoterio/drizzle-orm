@@ -8,11 +8,18 @@ export const createCourseRoute: FastifyPluginAsyncZod = async (server) => {
     "/courses",
     {
       schema: {
+        tags: ["courses"],
+        summary: "Create a course.",
         body: z.object({
           title: z
             .string()
             .min(5, "Título precisa ter pelo menos 5 caracteres"),
         }),
+        response: {
+          201: z
+            .object({ courseId: z.uuid() })
+            .describe("Curso criado com sucesso."),
+        },
       },
     },
     async (request, reply) => {
@@ -23,7 +30,7 @@ export const createCourseRoute: FastifyPluginAsyncZod = async (server) => {
         .values({ title: courseTitle })
         .returning();
 
-      reply.status(201).send({ id: result[0].id });
+      reply.status(201).send({ courseId: result[0].id });
     }
   );
 };
