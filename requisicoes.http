@@ -1,14 +1,16 @@
+### Criar
+
 POST http://localhost:3333/courses
 Content-Type: application/json
 
 {
-  "title": "Cur"
+  "title": "Curso de Java"
 }
 
-###
+### Buscar
 
-GET http://localhost:3333/courses
+GET http://localhost:3333/courses?orderBy=title&search=reac&page=2
 
-###
+### Buscar por ID
 
 GET http://localhost:3333/courses/123
