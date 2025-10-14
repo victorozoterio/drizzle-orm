@@ -15,6 +15,13 @@
       "when": 1760053907078,
       "tag": "0001_jittery_thunderball",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1760465614982,
+      "tag": "0002_tearful_magma",
+      "breakpoints": true
     }
   ]
 }
