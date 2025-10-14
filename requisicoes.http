@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### Buscar
 
-GET http://localhost:3333/courses?orderBy=title&search=reac&page=2
+GET http://localhost:3333/courses?orderBy=title
 
 ### Buscar por ID
 
