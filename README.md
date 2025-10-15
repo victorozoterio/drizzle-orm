@@ -4,6 +4,20 @@
     <img alt="Fundamentos do Desenvolvimento de Software" src="./.github/fundamentals.png" width="100%" />    
 </a>
 
+## Configuração das variáveis de ambiente
+
+Crie os arquivos `.env` e `.env.test` na raiz do projeto com o seguinte conteúdo:
+
+```bash
+# .env
+NODE_ENV=development
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/desafio"
+
+# .env.test
+NODE_ENV=test
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/desafio_test"
+```
+
 # Formas de enviar dados em uma requisição
 
 - Search Params -> Usado para fazer filtros, ou seja, são parâmetro opcionais
