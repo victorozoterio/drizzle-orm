@@ -62,3 +62,13 @@ Unit -> Testas os caminhos infelizes (Bad Paths)
 E2E -> Testas o caminho feliz (Happy Path)
 
 Será feito apenas os testes E2E dessa aplicação, onde de fato fazemos requisições HTTP, esse tipo de teste é o mais pesado que tem.
+
+# O que é Hash?
+
+Hash é tipo uma criptografia, porém ele só tem o processo de ida, ou seja, é impossível deshashear algo. Pegando o exemplo de uma senha então, como é possível saber a senha posta está correta? simples, será salvo no banco de dados o hash da senha definida e na hora de fazer o login será feito o hash da senha inserida, caso o hash da senha inserida seja igual ao hash salvo no banco de dados, então a senha está correta.
+
+Até mesmo sistemas de sincronização de arquivos com a nuvem usam o sistema de hash (SHA-256), por exemplo, o One Drive pega todos os arquivos que existem em uma pasta, gera um pequeno hash e salva no banco de dados, caso tu modifique qualquer arquivo o hash será diferente do que está salvo no banco de dados, e é exatamente assim que o sistema sabe que os dados não estão sincronizados.
+
+# Por que usar o Argon2 ao invés o Bcrypt?
+
+Porque o Argon2 é mais rápido no processo de geração de senhas e consome menos recursos para fazer o hash da senha.
