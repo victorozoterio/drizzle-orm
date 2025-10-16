@@ -1,6 +1,7 @@
 ### Criar
 POST http://localhost:3333/courses
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjU1MzM1Yi02YjdkLTRmMTEtYWIyYi01NTgyYzM5ZjRhZDQiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc2MDY0NjgxMX0.ay9yC8667Lw6N7xmgGKPG0D2ed2fdUqTT5SLBSdl4CM
 
 {
   "title": "Curso de Java"

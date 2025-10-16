@@ -118,3 +118,9 @@ Chaves assimétricas (Privada/Pública - SSH)
 # O que é uma data em Unix Epoch?
 
 É o número de segundos (ou milissegundos) que se passaram desde 1 de janeiro de 1970. É uma forma de representar uma data sem precisar escrever uma data de fato.
+
+# Diferença entre interface e type
+
+Interface: Usada para definir a estrutura de um objeto e pode ser estendida por outras interfaces, permitindo herança. Suporta a fusão de declarações.
+
+Type: Define tipos de dados e é mais flexível, podendo ser usado para qualquer tipo, como objetos, uniões, interseções, tuplas, etc. Não permite fusão de declarações.
