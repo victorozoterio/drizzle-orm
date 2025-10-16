@@ -4,7 +4,7 @@ import request from "supertest";
 import { server } from "../app.ts";
 import { makeCourse } from "../tests/factories/make-course.factory.ts";
 
-test("get courses", async () => {
+test("get courses filter by title", async () => {
   await server.ready();
 
   const titleId = randomUUID();
