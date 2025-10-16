@@ -15,7 +15,5 @@ test("login", async () => {
     .send({ email: user.email, password: passwordBeforeHash });
 
   expect(response.status).toEqual(200);
-  expect(response.body).toEqual({
-    message: "Ok!",
-  });
+  expect(response.body).toEqual({ token: expect.any(String) });
 });
