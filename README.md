@@ -72,3 +72,49 @@ Até mesmo sistemas de sincronização de arquivos com a nuvem usam o sistema de
 # Por que usar o Argon2 ao invés o Bcrypt?
 
 Porque o Argon2 é mais rápido no processo de geração de senhas e consome menos recursos para fazer o hash da senha.
+
+# Diferença entre autenticação Stateful vs Stateless
+
+Stateful é o nome que damos para algum código/aplicação/funcionalidade que precisa guardar um estado para continuar funcionando. Já o Stateless não precisa guardar um estado para continuar funcionando.
+
+## Stateful
+
+```JSON
+POST /sessions
+{ "headers" : { "Code": "A3H6C" } }
+
+Tabela: sessions
+
+id
+user_id
+code
+expires_at
+```
+
+Meu frontend envia o code via Headers, o backend verifica se esse code está na minha tabela sessions, se estiver então essa pessoa está logada. Essa forma de autenticação é ótima para fazer Revoke, ou seja, revogar um acesso, para isso basta o admin apagar o registro de sessão do usuário que ele deseja revogar o acesso.
+
+# Stateless
+
+```JSON
+
+POST /sessions
+{ "headers" : { "Authorization": "131141fsfsfs.232334fdfaadda.aafsaae2321d" } }
+
+"131141fsfsfs" = Header (algoritmo utilizado e tipo do token)
+"232334fdfaadda" = Payload (informações dentro do token, ex: userUuid)
+"aafsaae2321d" = assinatura para comprovar que o token não foi modificado
+```
+
+Meu frontend envia um token via Headers, o backend verifica se esse token foi gerado a partir do SECRE, se foi então a pessoa está logada. Esse token não tem problema estar visível no frontend pois as pessoas que tiverem acesso a esse token não vão conseguir criar outros tokens
+
+# Diferença entre criptografia de chave simétrica x assimétrica
+
+Chave simétrica é quando existe apenas uma chave, ou seja, essa chave é usada para criar tokens e também para validar tokens criados a partir dessa mesma chave.
+
+Chave assimétricas é quando existem duas chaves, uma privada para criar tokens e uma pública para validar tokens criados a partir da chave privada.
+
+Chaves assimétricas (Privada/Pública - SSH)
+
+# O que é uma data em Unix Epoch?
+
+É o número de segundos (ou milissegundos) que se passaram desde 1 de janeiro de 1970. É uma forma de representar uma data sem precisar escrever uma data de fato.

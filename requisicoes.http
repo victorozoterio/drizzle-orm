@@ -1,5 +1,4 @@
 ### Criar
-
 POST http://localhost:3333/courses
 Content-Type: application/json
 
@@ -8,12 +7,11 @@ Content-Type: application/json
 }
 
 ### Buscar
-
 GET http://localhost:3333/courses?orderBy=title
 
 ### Buscar por ID
-
-GET http://localhost:3333/courses/123
+GET http://localhost:3333/courses/592449cf-2bfa-4994-84ab-4e832d8dac72
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjU1MzM1Yi02YjdkLTRmMTEtYWIyYi01NTgyYzM5ZjRhZDQiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2MDYzNzA4MX0.h7zyehBxaHAFCERbuqehKukhqEvzGsVXz0jPCKxXArw
 
 ### Login
 POST http://localhost:3333/sessions
