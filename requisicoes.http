@@ -14,3 +14,12 @@ GET http://localhost:3333/courses?orderBy=title
 ### Buscar por ID
 
 GET http://localhost:3333/courses/123
+
+### Login
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+  "email": "Marcelo24@bol.com.br",
+  "password": "123456"
+}
