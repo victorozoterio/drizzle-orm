@@ -124,3 +124,11 @@ Chaves assimétricas (Privada/Pública - SSH)
 Interface: Usada para definir a estrutura de um objeto e pode ser estendida por outras interfaces, permitindo herança. Suporta a fusão de declarações.
 
 Type: Define tipos de dados e é mais flexível, podendo ser usado para qualquer tipo, como objetos, uniões, interseções, tuplas, etc. Não permite fusão de declarações.
+
+# O que é a versão alpine do node?
+
+É uma versão reduzida do linux, uma versão enxuta que possui somente o necessário.
+
+# Qual a diferença do npm ci para o npm i?
+
+O `npm ci` instala somente o que está no package-lock.json, enquanto o `npm i` instala o que está no package.json.
