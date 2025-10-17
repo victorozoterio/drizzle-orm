@@ -11,6 +11,7 @@ import { createCourseRoute } from "./routes/create-course.ts";
 import { getCourseByIdRoute } from "./routes/get-course-by-id.ts";
 import { getCoursesRoute } from "./routes/get-courses.ts";
 import { loginRoute } from "./routes/login.ts";
+import { createUserRoute } from "./routes/create-user.ts";
 
 const server = fastify({
   logger: {
@@ -46,9 +47,10 @@ if (process.env.NODE_ENV === "development") {
 server.setValidatorCompiler(validatorCompiler); // valido os dados de entrada (ex: título do curso)
 server.setSerializerCompiler(serializerCompiler); // converte os dados de saída de uma rota em um outro formato
 
+server.register(createUserRoute);
+server.register(loginRoute);
 server.register(createCourseRoute);
 server.register(getCourseByIdRoute);
 server.register(getCoursesRoute);
-server.register(loginRoute);
 
 export { server };
