@@ -1,18 +1,13 @@
-### Criar
-POST http://localhost:3333/courses
+### Criar usuário
+POST http://localhost:3333/users
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjU1MzM1Yi02YjdkLTRmMTEtYWIyYi01NTgyYzM5ZjRhZDQiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc2MDY0NjgxMX0.ay9yC8667Lw6N7xmgGKPG0D2ed2fdUqTT5SLBSdl4CM
 
 {
-  "title": "Curso de Java"
+  "name": "Victor Ozoterio",
+  "email": "alunoVictor@gmail.com",
+  "password": "123456",
+  "role": "student"
 }
-
-### Buscar
-GET http://localhost:3333/courses?orderBy=title
-
-### Buscar por ID
-GET http://localhost:3333/courses/592449cf-2bfa-4994-84ab-4e832d8dac72
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjU1MzM1Yi02YjdkLTRmMTEtYWIyYi01NTgyYzM5ZjRhZDQiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2MDYzNzA4MX0.h7zyehBxaHAFCERbuqehKukhqEvzGsVXz0jPCKxXArw
 
 ### Login
 POST http://localhost:3333/sessions
@@ -22,3 +17,61 @@ Content-Type: application/json
   "email": "Marcelo24@bol.com.br",
   "password": "123456"
 }
+
+### Criar curso
+POST http://localhost:3333/courses
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjU1MzM1Yi02YjdkLTRmMTEtYWIyYi01NTgyYzM5ZjRhZDQiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc2MDY0NjgxMX0.ay9yC8667Lw6N7xmgGKPG0D2ed2fdUqTT5SLBSdl4CM
+
+{
+  "title": "Curso de Java"
+}
+
+### Buscar cursos
+GET http://localhost:3333/courses?orderBy=title
+
+### Buscar curso por ID
+GET http://localhost:3333/courses/592449cf-2bfa-4994-84ab-4e832d8dac72
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjU1MzM1Yi02YjdkLTRmMTEtYWIyYi01NTgyYzM5ZjRhZDQiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2MDYzNzA4MX0.h7zyehBxaHAFCERbuqehKukhqEvzGsVXz0jPCKxXArw
+
+# Produção
+
+### profVictor@gmail.com = 458a416c-6555-47e8-b53b-7c29371e2896
+### alunoVictor@gmail.com = 7292fac4-801b-44be-86aa-24f4899ac0e6
+
+### Criar usuário
+POST https://drizzle-orm.victorozoterio.site/users
+Content-Type: application/json
+
+{
+  "name": "Victor Ozoterio",
+  "email": "alunoVictor@gmail.com",
+  "password": "123456",
+  "role": "student"
+}
+
+### Login
+POST https://drizzle-orm.victorozoterio.site/sessions
+Content-Type: application/json
+
+{
+  "email": "profVictor@gmail.com",
+  "password": "123456"
+}
+
+### Criar curso
+POST https://drizzle-orm.victorozoterio.site/courses
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NThhNDE2Yy02NTU1LTQ3ZTgtYjUzYi03YzI5MzcxZTI4OTYiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc2MDcwNzA5OH0.gngyqBUTqJegMTyU42-b_uW7vEvFKW-0K77SlzE7pIY
+
+{
+  "title": "Curso de Java"
+}
+
+### Buscar cursos
+GET https://drizzle-orm.victorozoterio.site/courses?orderBy=title
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NThhNDE2Yy02NTU1LTQ3ZTgtYjUzYi03YzI5MzcxZTI4OTYiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc2MDcwNzA5OH0.gngyqBUTqJegMTyU42-b_uW7vEvFKW-0K77SlzE7pIY
+
+### Buscar curso por ID
+GET https://drizzle-orm.victorozoterio.site/courses/2c802a97-26f5-4aa9-a0b8-dedccd0ded4d
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NThhNDE2Yy02NTU1LTQ3ZTgtYjUzYi03YzI5MzcxZTI4OTYiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc2MDcwNzA5OH0.gngyqBUTqJegMTyU42-b_uW7vEvFKW-0K77SlzE7pIY
